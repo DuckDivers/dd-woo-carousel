@@ -76,7 +76,7 @@ class Duck_Woo_Carousel {
 
 		$this->load_dependencies();
 		$this->set_locale();
-		$this->define_admin_hooks();
+//		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
 	}
@@ -112,11 +112,6 @@ class Duck_Woo_Carousel {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-dd-woo-carousel-i18n.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-dd-woo-carousel-admin.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -140,22 +135,6 @@ class Duck_Woo_Carousel {
 		$plugin_i18n = new Duck_Woo_Carousel_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
-	}
-
-	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_admin_hooks() {
-
-		$plugin_admin = new Duck_Woo_Carousel_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 	}
 

@@ -11,6 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  */
 function carousel_shortcode( $atts, $content = null ) {
+    
+    wp_enqueue_script('slick');
+    wp_enqueue_style('slick-css');
 
 	$atts = shortcode_atts (array(
 		'featured'            => 'yes',
@@ -64,23 +67,41 @@ function carousel_shortcode( $atts, $content = null ) {
 
 		<?php 
 
-			echo '<div class="cherry_wc_product_carousel ' . esc_attr( $atts['custom_class'] ) . '">';
-			echo '<ul class="products owl-carousel">';
+			echo '<div class="duck-carousel' . esc_attr( $atts['custom_class'] ) . '">';
 
 		?>
 
 			<?php while ( $products->have_posts() ) : $products->the_post(); ?>
-                
-                <?php echo the_title() . ' <br /> ' ;?>            
-
+                <div>
+                <?php 	
+                        do_action( 'woocommerce_before_shop_loop_item' );
+                        do_action( 'woocommerce_before_shop_loop_item_title' );
+                        echo '<h4>';
+                            echo the_title();
+                        echo '</h4>';
+                        do_action( 'woocommerce_after_shop_loop_item_title' );
+                        echo '<div style="text-align: center;">';
+                            do_action( 'woocommerce_after_shop_loop_item' );
+                        echo '</div>';
+                ?>            
+                </div>
 			<?php endwhile; // end of the loop. ?>
 
 		<?php 
-			echo '</ul>';
 			echo '</div>';
-
+        
 		?>
-
+        <script>
+           jQuery(document).ready(function(){
+               jQuery(".duck-carousel").slick({
+                  slidesToShow: 4,
+                  slidesToScroll: 1,
+                  autoplay: true,
+                  autoplaySpeed: 2000,
+                  arrows: false,
+                });
+           }); 
+        </script>
 	<?php endif;
 
 	wp_reset_postdata();
