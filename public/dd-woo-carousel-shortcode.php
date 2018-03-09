@@ -69,7 +69,7 @@ function carousel_shortcode( $atts, $content = null ) {
 
 		<?php 
 
-			echo '<div class="duck-carousel owl-carousel' . esc_attr( $atts['custom_class'] ) . '">';
+			echo '<div class="duck-woo-carousel' . esc_attr( $atts['custom_class'] ) . '">';
 
 		?>
 
@@ -95,7 +95,7 @@ function carousel_shortcode( $atts, $content = null ) {
 
 	wp_reset_postdata();
 
-	return '<div class="duck-diver-owl-carousel">' . ob_get_clean() . '</div>';
+	return '<div class="woocommerce duck-carousel-wrapper">' . ob_get_clean() . '</div>';
 
     }
 

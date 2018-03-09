@@ -63,33 +63,16 @@ class Duck_Woo_Carousel_Public {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Duck_Woo_Carousel_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Duck_Woo_Carousel_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_register_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/owl/assets/owl.carousel.min.css', array(), $this->version, 'all' );
-        wp_register_style('slick-css', plugin_dir_url(__FILE__) . 'js/owl/assets/owl.theme.default.min.css' );
-
+		wp_register_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/dd-woo-carousel-public.css', array(), $this->version, 'all' );
+        wp_register_style('slick-css', plugin_dir_url(__FILE__) . 'js/slick/slick.css' );
 	}
-
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
 	public function enqueue_scripts() {
 
-		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/dd-woo-carousel-public.js', array( 'jquery' ), $this->version, false );
-        wp_register_script( 'slick', plugin_dir_url(__FILE__) . 'js/owl/owl.carousel.min.js', array('jquery'), '2.1', false);
+        wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/dd-woo-carousel-public.js', array( 'jquery' ), $this->version, false );
+        wp_register_script( 'slick', plugin_dir_url(__FILE__) . 'js/slick/slick.min.js', array('jquery'), '1.12', false);
 	}
+
+
     
     public function include_shortcode(){
         require ('dd-woo-carousel-shortcode.php');
