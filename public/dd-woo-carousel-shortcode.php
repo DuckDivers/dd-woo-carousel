@@ -14,6 +14,8 @@ function carousel_shortcode( $atts, $content = null ) {
     
     wp_enqueue_script('slick');
     wp_enqueue_style('slick-css');
+    wp_enqueue_script('dd-woo-carousel');
+    wp_enqueue_style('dd-woo-carousel');
 
 	$atts = shortcode_atts (array(
 		'featured'            => 'yes',
@@ -67,7 +69,7 @@ function carousel_shortcode( $atts, $content = null ) {
 
 		<?php 
 
-			echo '<div class="duck-carousel' . esc_attr( $atts['custom_class'] ) . '">';
+			echo '<div class="duck-carousel owl-carousel' . esc_attr( $atts['custom_class'] ) . '">';
 
 		?>
 
@@ -89,24 +91,11 @@ function carousel_shortcode( $atts, $content = null ) {
 
 		<?php 
 			echo '</div>';
-        
-		?>
-        <script>
-           jQuery(document).ready(function(){
-               jQuery(".duck-carousel").slick({
-                  slidesToShow: 4,
-                  slidesToScroll: 1,
-                  autoplay: true,
-                  autoplaySpeed: 2000,
-                  arrows: false,
-                });
-           }); 
-        </script>
-	<?php endif;
+    endif;
 
 	wp_reset_postdata();
 
-	return '<div class="woocommerce">' . ob_get_clean() . '</div>';
+	return '<div class="duck-diver-owl-carousel">' . ob_get_clean() . '</div>';
 
     }
 

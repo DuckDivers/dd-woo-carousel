@@ -75,8 +75,8 @@ class Duck_Woo_Carousel_Public {
 		 * class.
 		 */
 
-		wp_register_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/dd-woo-carousel-public.css', array(), $this->version, 'all' );
-        wp_register_style('slick-css', plugin_dir_url(__FILE__) . 'js/slick/slick.css' );
+		wp_register_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/owl/assets/owl.carousel.min.css', array(), $this->version, 'all' );
+        wp_register_style('slick-css', plugin_dir_url(__FILE__) . 'js/owl/assets/owl.theme.default.min.css' );
 
 	}
 
@@ -87,8 +87,8 @@ class Duck_Woo_Carousel_Public {
 	 */
 	public function enqueue_scripts() {
 
-		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/dd-woo-carousel-public.js', array( 'jquery' ), $this->version, false );
-        wp_register_script( 'slick', plugin_dir_url(__FILE__) . 'js/slick/slick.min.js', array('jquery'), '1.12', false);
+		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/dd-woo-carousel-public.js', array( 'jquery' ), $this->version, false );
+        wp_register_script( 'slick', plugin_dir_url(__FILE__) . 'js/owl/owl.carousel.min.js', array('jquery'), '2.1', false);
 	}
     
     public function include_shortcode(){
